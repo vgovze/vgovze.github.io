@@ -1,0 +1,37 @@
+#!/bin/bash
+usage () {
+    cat << EOF
+Run or build the jekyll container.
+
+-h | --help     : print this help and exit.
+-b | --build    : build the jekyll docker container.
+-r | --run      : run the jekyll docker container.
+EOF
+}
+
+DOCKER_IMAGE="my-jekyll"
+
+case $1 in
+-r|--run)
+    exec docker run -it --rm \
+        -v $(pwd):/srv/jekyll \
+        -p 4000:4000 $DOCKER_IMAGE \
+        bash
+    ;;
+-b|--build)
+    docker build -t $DOCKER_IMAGE \
+        --build-arg HOST_UID=$(id -u) \
+        --build-arg HOST_GID=$(id -g) \
+        .
+    exit $?
+    ;;
+-h|--help)
+    usage
+    exit 0
+    ;;
+*)
+    echo "Invalid option passed."
+    usage
+    exit 1
+    ;;
+esac

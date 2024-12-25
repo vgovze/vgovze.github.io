@@ -1,1 +1,4 @@
-Jekyll can be run with Docker. There is a docker container [here](https://hub.docker.com/r/jekyll/jekyll)
+# Notes
+
+Jekyll can be run containerized in Docker. The docker image is found
+[here](https://hub.docker.com/r/jekyll/jekyll).
