@@ -53,3 +53,8 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+exclude:
+  - README.md
+  - LICENCE.md
+  - Dockerfile
+  - jekyll
